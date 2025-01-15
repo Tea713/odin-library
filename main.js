@@ -1,5 +1,5 @@
 const libraryTable = document.getElementById("library");
-
+const dialog = document.querySelector("dialog");
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -56,3 +56,11 @@ for (const book of myLibrary) {
 
     libraryTable.appendChild(newRow);
 }
+
+document.getElementById("add-entry").addEventListener("click", () => {
+    dialog.showModal();
+});
+
+document.getElementById("cancel-add").addEventListener("click", () => {
+    dialog.close();
+});

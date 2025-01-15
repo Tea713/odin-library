@@ -70,27 +70,80 @@ h6 {
 }
 
 /* main style */
+:root {
+    font-variant-numeric: tabular-nums lining-nums;
+    --border-thickness: 2px;
+    font-weight: 500;
+    text-decoration-thickness: var(--border-thickness);
+}
+
 * {
     color: white;
     font-family: "Roboto Mono", monospacem, system-ui;
 }
-
 body {
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 18px;
 }
 
 table {
     border-collapse: collapse;
-    border: 2px solid white;
+    border: 3px solid white;
     min-width: 500px;
 }
 
 td,
 th {
-    border: 2px solid white;
+    border: 3px solid white;
     padding: 0.5rem 2rem;
+}
+
+dialog {
+    background-color: black;
+}
+
+input {
+    background-color: black;
+    min-width: 100%;
+    border: 3px solid white;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+fieldset[class="input-field"] {
+    border: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+fieldset[class=radio-field] {
+    display: grid;
+    grid: 1fr 1fr / 1fr 1fr;
+    border: 3px solid white;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+#new-entry {
+    padding: 1rem 2rem;
+    display: grid;
+    grid: 1fr 1fr 1fr / 1fr 1fr;
 }
