@@ -103,6 +103,14 @@ th {
 
 dialog {
     background-color: black;
+    position: fixed;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
 input {
@@ -121,18 +129,39 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+input[type="radio"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    min-width: auto;
+}
+
 fieldset[class="input-field"] {
     border: none;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
+    padding: 0;
 }
 
-fieldset[class=radio-field] {
-    display: grid;
-    grid: 1fr 1fr / 1fr 1fr;
+fieldset[class="radio-field"] {
     border: 3px solid white;
+    display: flex;
+    align-items: center;
+}
+
+fieldset[class="radio-field"] label {
+    display: block;
+    float: left;
+    padding: 0 20px 0 10px;
+}
+
+fieldset[class="radio-field"] input {
+    float: left;
 }
 
 button {
@@ -142,8 +171,23 @@ button {
     cursor: pointer;
 }
 
+#dialog-buttons {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+}
+
+#dialog-buttons button {
+    width: 100px;
+}
+
 #new-entry {
     padding: 1rem 2rem;
-    display: grid;
-    grid: 1fr 1fr 1fr / 1fr 1fr;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#page-title {
+    padding-top: 1rem;
 }

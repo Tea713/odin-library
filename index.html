@@ -40,15 +40,13 @@
                 </fieldset>
                 <fieldset class="radio-field">
                     <legend>Read</legend>
-
-                    <label for="read-type-1">Yes</label>
                     <input
                         id="read-type-1"
                         name="read-type"
                         type="radio"
                         value="true"
                     />
-                    <label for="read-type-2">No</label>
+                    <label for="read-type-1">Yes</label>
                     <input
                         id="read-type-2"
                         name="read-type"
@@ -56,10 +54,13 @@
                         value="false"
                         checked
                     />
+                    <label for="read-type-2">No</label>
                 </fieldset>
-                <button type="button" id="cancel-add">CANCEL</button>
-                <button type="reset">CLEAR</button>
-                <button type="button">SAVE</button>
+                <div id="dialog-buttons">
+                    <button type="button" id="cancel-add">CANCEL</button>
+                    <button type="reset">CLEAR</button>
+                    <button type="button">SAVE</button>
+                </div>
             </form>
         </dialog>
         <table id="library">
