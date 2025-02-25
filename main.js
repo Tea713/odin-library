@@ -24,19 +24,35 @@ function renderLibrary() {
         const newTitle = document.createElement("td");
         const newAuthor = document.createElement("td");
         const newPages = document.createElement("td");
-        const newRead = document.createElement("td");
+        const newReadBorder = document.createElement("td");
+        const newRead = document.createElement("button");
+        newRead.addEventListener("click", () => {
+            myLibrary.at(count - 1).read = !myLibrary.at(count - 1).read;
+            newRead.textContent = myLibrary.at(count - 1).read;
+        });
+        const newRemoveBorder = document.createElement("td");
+        const newRemove = document.createElement("button");
+        newRemove.addEventListener("click", () => {
+            myLibrary.splice(count - 1, 1);
+            renderLibrary();
+        });
 
         order.textContent = count;
         newTitle.textContent = book.title;
         newAuthor.textContent = book.author;
         newPages.textContent = book.pages;
         newRead.textContent = book.read;
+        newRemove.textContent = "Remove";
+        newRemove.classList.add("remove-btn");
 
         newRow.appendChild(order);
         newRow.appendChild(newTitle);
         newRow.appendChild(newAuthor);
         newRow.appendChild(newPages);
-        newRow.appendChild(newRead);
+        newRow.appendChild(newReadBorder);
+        newReadBorder.appendChild(newRead);
+        newRemoveBorder.appendChild(newRemove);
+        newRow.appendChild(newRemoveBorder);
 
         libraryTable.appendChild(newRow);
     }
@@ -44,10 +60,6 @@ function renderLibrary() {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-}
-
-function displayNewBook(book) {
-    const newRow = document.crea;
 }
 
 const book1 = new Book("1984", "George Orwell", 368, true);
