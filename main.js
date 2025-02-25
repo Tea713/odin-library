@@ -19,6 +19,7 @@ function renderLibrary() {
 
     for (const book of myLibrary) {
         count = count + 1;
+        const curr = count;
         const newRow = document.createElement("tr");
         const order = document.createElement("td");
         const newTitle = document.createElement("td");
@@ -27,13 +28,13 @@ function renderLibrary() {
         const newReadBorder = document.createElement("td");
         const newRead = document.createElement("button");
         newRead.addEventListener("click", () => {
-            myLibrary.at(count - 1).read = !myLibrary.at(count - 1).read;
-            newRead.textContent = myLibrary.at(count - 1).read;
+            myLibrary.at(curr - 1).read = !myLibrary.at(curr - 1).read;
+            newRead.textContent = myLibrary.at(curr - 1).read;
         });
         const newRemoveBorder = document.createElement("td");
         const newRemove = document.createElement("button");
         newRemove.addEventListener("click", () => {
-            myLibrary.splice(count - 1, 1);
+            myLibrary.splice(curr - 1, 1);
             renderLibrary();
         });
 
