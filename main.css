@@ -190,6 +190,7 @@ button {
 
 #library button {
     border: 0;
+    text-decoration: underline;
 }
 
 #dialog-buttons {

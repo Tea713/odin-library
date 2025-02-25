@@ -43,7 +43,7 @@ function renderLibrary() {
         newAuthor.textContent = book.author;
         newPages.textContent = book.pages;
         newRead.textContent = book.read;
-        newRemove.textContent = "Remove";
+        newRemove.textContent = "remove";
         newRemove.classList.add("remove-btn");
 
         newRow.appendChild(order);
