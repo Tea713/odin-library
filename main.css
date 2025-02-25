@@ -113,6 +113,10 @@ dialog {
     transform: translateX(-50%) translateY(-50%);
 }
 
+dialog::backdrop {
+    backdrop-filter: blur(4px);
+}
+
 input {
     background-color: black;
     min-width: 100%;
@@ -137,6 +141,8 @@ input[type="radio"] {
     background-color: transparent;
     cursor: pointer;
     min-width: auto;
+    padding: 1px;
+    background-clip: content-box;
 }
 
 fieldset[class="input-field"] {
@@ -146,6 +152,11 @@ fieldset[class="input-field"] {
     flex-direction: column;
     flex-wrap: wrap;
     padding: 0;
+}
+
+fieldset[class="input-field"] input:focus {
+    outline: white;
+    box-shadow: 0 0 4px white;
 }
 
 fieldset[class="radio-field"] {
@@ -162,6 +173,11 @@ fieldset[class="radio-field"] label {
 
 fieldset[class="radio-field"] input {
     float: left;
+    padding: 4px;
+}
+
+fieldset[class="radio-field"] input:checked {
+    background-color: white;
 }
 
 button {
@@ -169,6 +185,7 @@ button {
     color: white;
     border: 3px solid white;
     cursor: pointer;
+    padding: 4px 12px;
 }
 
 #dialog-buttons {
@@ -183,7 +200,7 @@ button {
 
 #new-entry {
     padding: 1rem 2rem;
-    gap: 1rem;
+    gap: 2rem;
     display: flex;
     flex-direction: column;
 }

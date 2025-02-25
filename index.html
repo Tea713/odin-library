@@ -24,6 +24,7 @@
                         type="text"
                         id="title"
                         placeholder="e.g. The Great Gasby"
+                        required
                     />
                 </fieldset>
                 <fieldset class="input-field">
@@ -32,11 +33,21 @@
                         type="text"
                         id="author"
                         placeholder="e.g. F. Scott Fitzgerald"
+                        required
                     />
                 </fieldset>
                 <fieldset class="input-field">
                     <label for="pages">Number of pages</label>
-                    <input type="number" min="1" id="pages" value="180" />
+                    <input
+                        type="number"
+                        min="1"
+                        step="1"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        id="pages"
+                        value="180"
+                        required
+                    />
                 </fieldset>
                 <fieldset class="radio-field">
                     <legend>Read</legend>
@@ -57,9 +68,9 @@
                     <label for="read-type-2">No</label>
                 </fieldset>
                 <div id="dialog-buttons">
-                    <button type="button" id="cancel-add">CANCEL</button>
-                    <button type="reset">CLEAR</button>
-                    <button type="button">SAVE</button>
+                    <button type="button" id="cancel-add-btn">CANCEL</button>
+                    <button type="reset" id="reset-btn">CLEAR</button>
+                    <button type="submit" id="save-entry-btn">SAVE</button>
                 </div>
             </form>
         </dialog>
@@ -72,6 +83,6 @@
                 <th>Read</th>
             </tr>
         </table>
-        <button id="add-entry">New entry</button>
+        <button id="add-entry-btn">New entry</button>
     </body>
 </html>

@@ -9,8 +9,45 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+var count = 0;
+
+function renderLibrary() {
+    count = 0;
+    while (libraryTable.rows.length > 1) {
+        libraryTable.deleteRow(1);
+    }
+
+    for (const book of myLibrary) {
+        count = count + 1;
+        const newRow = document.createElement("tr");
+        const order = document.createElement("td");
+        const newTitle = document.createElement("td");
+        const newAuthor = document.createElement("td");
+        const newPages = document.createElement("td");
+        const newRead = document.createElement("td");
+
+        order.textContent = count;
+        newTitle.textContent = book.title;
+        newAuthor.textContent = book.author;
+        newPages.textContent = book.pages;
+        newRead.textContent = book.read;
+
+        newRow.appendChild(order);
+        newRow.appendChild(newTitle);
+        newRow.appendChild(newAuthor);
+        newRow.appendChild(newPages);
+        newRow.appendChild(newRead);
+
+        libraryTable.appendChild(newRow);
+    }
+}
+
 function addBookToLibrary(book) {
     myLibrary.push(book);
+}
+
+function displayNewBook(book) {
+    const newRow = document.crea;
 }
 
 const book1 = new Book("1984", "George Orwell", 368, true);
@@ -30,37 +67,39 @@ const book3 = new Book(
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
+renderLibrary();
 
-var count = 0;
+const newEntryTitle = document.getElementById("title");
+const newEntryAuthor = document.getElementById("author");
+const newEntryLength = document.getElementById("pages");
+const newEntryStatus = document.getElementById("j");
 
-for (const book of myLibrary) {
-    count = count + 1;
-    const newRow = document.createElement("tr");
-    const order = document.createElement("td");
-    const newTitle = document.createElement("td");
-    const newAuthor = document.createElement("td");
-    const newPages = document.createElement("td");
-    const newRead = document.createElement("td");
-
-    order.textContent = count;
-    newTitle.textContent = book.title;
-    newAuthor.textContent = book.author;
-    newPages.textContent = book.pages;
-    newRead.textContent = book.read;
-
-    newRow.appendChild(order);
-    newRow.appendChild(newTitle);
-    newRow.appendChild(newAuthor);
-    newRow.appendChild(newPages);
-    newRow.appendChild(newRead);
-
-    libraryTable.appendChild(newRow);
-}
-
-document.getElementById("add-entry").addEventListener("click", () => {
+document.getElementById("add-entry-btn").addEventListener("click", () => {
     dialog.showModal();
 });
 
-document.getElementById("cancel-add").addEventListener("click", () => {
+document.getElementById("save-entry-btn").addEventListener("click", (event) => {
+    const form = document.getElementById("new-entry");
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+    event.preventDefault();
+    const readType = document.querySelector(
+        'input[name="read-type"]:checked'
+    ).value;
+    const newBook = new Book(
+        newEntryTitle.value,
+        newEntryAuthor.value,
+        newEntryLength.value,
+        readType
+    );
+    addBookToLibrary(newBook);
+    renderLibrary();
+    dialog.close();
+    form.reset();
+});
+
+document.getElementById("cancel-add-btn").addEventListener("click", () => {
     dialog.close();
 });
